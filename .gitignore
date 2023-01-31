@@ -1,3 +1,2 @@
-nimcache/
-nimblecache/
-htmldocs/
+*.exe
+app/
