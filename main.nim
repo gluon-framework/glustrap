@@ -76,5 +76,5 @@ echo "glustrap: starting node...\n"
 let targetDir = getAppDir() / "app"
 let nodeArgs = "." & commandLineParams()
 
-let process = startProcess("node", workingDir=targetDir, args=nodeArgs, options={ poUsePath, poParentStreams })
+let process = startProcess("node", workingDir=targetDir, args=nodeArgs, options={ poUsePath, poParentStreams, poDaemon })
 discard process.waitForExit()
