@@ -42,7 +42,7 @@ jobs:
         nimble install https://github.com/iffy/nimxc.git
 
     - name: Build
-      run: ./buildtools/compile_linux.sh
+      run: sh buildtools/compile_linux.sh
 
     - name: Upload builds
       run: |
@@ -93,7 +93,7 @@ jobs:
         nimble install https://github.com/iffy/nimxc.git
 
     - name: Build
-      run: ./buildtools/compile_mac.sh
+      run: sh buildtools/compile_mac.sh
 
     - name: Upload builds
       run: |
