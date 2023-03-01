@@ -9,5 +9,4 @@ nim -d:release --gc:none --opt:size --app:gui -o:bin/mac_x64 c main.nim
 nimxc -d:release --gc:none --opt:size --app:gui -o:bin/mac_arm64 c main.nim -t macosx-arm64
 
 # strip all bins
-strip -s bin/mac_x64
-strip -s bin/mac_arm64
+strip bin/*
