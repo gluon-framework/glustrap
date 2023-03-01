@@ -38,8 +38,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
-        nimble refresh
-        nimble install nimxc
+        nimble install https://github.com/iffy/nimxc.git
 
     - name: Build
       run: ./buildtools/compile_linux.sh
@@ -63,8 +62,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
-        nimble refresh
-        nimble install nimxc
+        nimble install https://github.com/iffy/nimxc.git
         nimble install winim
 
     - name: Build
@@ -89,8 +87,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
-        nimble refresh
-        nimble install nimxc
+        nimble install https://github.com/iffy/nimxc.git
 
     - name: Build
       run: ./buildtools/compile_mac.sh
