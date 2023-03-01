@@ -1,0 +1,99 @@
+name: Nightly Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  prep-release:
+    name: Prep Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Prep release
+      run: |
+        git tag -d nightly || true
+        git push origin --delete nightly || true
+        git tag nightly
+        git push origin nightly
+        gh release delete nightly -y || true
+        gh release create nightly -p -t "Nightly" -n "$(git rev-parse HEAD | cut -c 1-7) | $(git log -1 --pretty=%B)"
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+  build-linux:
+    name: Build - Linux
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: jiro4989/setup-nim-action@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install Nim deps
+      run: |
+        nimble install nimxc
+
+    - name: Build
+      run: ./buildtools/compile_linux.sh
+
+    - name: Upload builds
+      run: |
+        gh release upload nightly bin/linux_x64#glustrap_linux_x64 bin/linux_x64#glustrap_linux_x86
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+  build-windows:
+    name: Build - Windows
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: jiro4989/setup-nim-action@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install Nim deps
+      run: |
+        nimble install nimxc
+        nimble install winim
+
+    - name: Build
+      run: buildtools\compile_windows.bat
+
+    - name: Upload builds
+      run: |
+        gh release upload nightly bin/win_x64.exe#glustrap_x64.exe bin/win_x86.exe#glustrap_x86.exe bin/win_arm64.exe#glustrap_arm64.exe
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+  build-macos:
+    name: Build - Mac
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: jiro4989/setup-nim-action@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install Nim deps
+      run: |
+        nimble install nimxc
+
+    - name: Build
+      run: ./buildtools/compile_mac.sh
+
+    - name: Upload builds
+      run: |
+        gh release upload nightly bin/mac_x64#glustrap_mac_x64 bin/mac_arm64#glustrap_mac_arm64
+      env:
+        GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'

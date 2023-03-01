@@ -6,7 +6,7 @@ mkdir bin
 nim -d:release --gc:none --opt:size --app:gui -o:bin/linux_x64 c main.nim
 
 # linux x86 (cross)
-call nimxc -d:release --gc:none --opt:size --app:gui -o:bin/linux_x86 c main.nim -t linux-i386
+nimxc -d:release --gc:none --opt:size --app:gui -o:bin/linux_x86 c main.nim -t linux-i386
 
 # strip all bins
 strip -s bin/*
