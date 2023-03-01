@@ -28,6 +28,7 @@ jobs:
   build-linux:
     name: Build - Linux
     runs-on: ubuntu-latest
+    needs: prep-release
 
     steps:
     - uses: actions/checkout@v3
@@ -53,6 +54,7 @@ jobs:
   build-windows:
     name: Build - Windows
     runs-on: windows-latest
+    needs: prep-release
 
     steps:
     - uses: actions/checkout@v3
@@ -79,6 +81,7 @@ jobs:
   build-macos:
     name: Build - Mac
     runs-on: macos-latest
+    needs: prep-release
 
     steps:
     - uses: actions/checkout@v3
