@@ -38,6 +38,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
+        nimble refresh
         nimble install nimxc
 
     - name: Build
@@ -62,6 +63,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
+        nimble refresh
         nimble install nimxc
         nimble install winim
 
@@ -87,6 +89,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
+        nimble refresh
         nimble install nimxc
 
     - name: Build
