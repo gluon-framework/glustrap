@@ -74,7 +74,7 @@ jobs:
 
     - name: Upload builds
       run: |
-          gh release upload nightly bin/win_x64.exe#glustrap_x64.exe bin/win_x86.exe#glustrap_x86.exe bin/win_arm64.exe#glustrap_arm64.exe
+          gh release upload nightly bin/win_x64.exe#glustrap_x64.exe bin/win_x86.exe#glustrap_x86.exe
       env:
         GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 
