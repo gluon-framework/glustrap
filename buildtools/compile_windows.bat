@@ -1,13 +1,13 @@
 mkdir bin
 
-# win x64 (native)
+rem win x64 (native)
 nim -d:release --gc:none --opt:size --app:gui -o:bin/win_x64.exe c main.nim
 
-# win x86 (cross)
+rem win x86 (cross)
 call nimxc -d:release --gc:none --opt:size --app:gui -o:bin/win_x86.exe c main.nim -t windows-i386
 
-# win arm64 (cross)
+rem win arm64 (cross)
 call nimxc -d:release --gc:none --opt:size --app:gui -o:bin/win_arm64.exe c main.nim -t windows-arm64
 
-# strip all bins
+rem strip all bins
 strip -s bin/*
