@@ -39,7 +39,7 @@ jobs:
 
     - name: Install Nim deps
       run: |
-        apt-get install binutils-aarch64-linux-gnu
+        sudo apt-get install binutils-aarch64-linux-gnu
         nimble refresh
         nimble install https://github.com/gluon-framework/nimxc.git
 

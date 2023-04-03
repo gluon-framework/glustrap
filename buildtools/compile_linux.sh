@@ -12,4 +12,5 @@ nimxc -d:release --gc:none --opt:size --app:gui -o:bin/linux_x86 c main.nim -t l
 nimxc -d:release --gc:none --opt:size --app:gui -o:bin/linux_arm64 c main.nim -t linux-arm64
 
 # strip all bins
-strip -s bin/*
+strip -s bin/linux_x64 bin/linux_x86
+aarch64-linux-gnu-strip -s bin/linux_arm64

@@ -10,4 +10,4 @@ rem win arm64 (cross)
 call nimxc -d:release --gc:none --opt:size --app:gui -o:bin/win_arm64.exe c main.nim -t windows-arm64
 
 rem strip all bins
-strip -s bin/*
+strip -s bin/*.exe
