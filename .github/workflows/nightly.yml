@@ -40,7 +40,7 @@ jobs:
     - name: Install Nim deps
       run: |
         nimble refresh
-        nimble install https://github.com/iffy/nimxc.git
+        nimble install https://github.com/gluon-framework/nimxc.git
 
     - name: Build
       run: sh buildtools/compile_linux.sh
@@ -66,7 +66,7 @@ jobs:
     - name: Install Nim deps
       run: |
         nimble refresh
-        nimble install https://github.com/iffy/nimxc.git
+        nimble install https://github.com/gluon-framework/nimxc.git
         nimble install winim
 
     - name: Build
