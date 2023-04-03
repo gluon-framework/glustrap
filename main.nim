@@ -34,7 +34,7 @@ if installedNodeMajor < 16:
     ext = ".tar.gz"
 
   let nodeTemp = getTempDir() / "node" & ext
-  let nodeVersion = "18.13.0"
+  let nodeVersion = "18.15.0"
 
   var nodeDownloadUrl = "https://nodejs.org/dist/v" & nodeVersion & "/node-v" & nodeVersion
 
@@ -57,7 +57,7 @@ if installedNodeMajor < 16:
   nodeDownloadUrl &= ext
 
   when defined(windows) and defined(arm64): # nodejs windows on arm is unofficial currently
-    nodeDownloadUrl = "https://unofficial-builds.nodejs.org/download/release/v19.3.0/node-v19.3.0-win-arm64.zip"
+    nodeDownloadUrl = "https://unofficial-builds.nodejs.org/download/release/v18.15.0/node-v19.3.0-win-arm64.zip"
 
   echo nodeDownloadUrl
 
