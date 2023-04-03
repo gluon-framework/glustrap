@@ -93,7 +93,7 @@ jobs:
     - name: Install Nim deps
       run: |
         nimble refresh
-        nimble install https://github.com/iffy/nimxc.git
+        nimble install https://github.com/gluon-framework/nimxc.git
 
     - name: Build
       run: sh buildtools/compile_mac.sh
